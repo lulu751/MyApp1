@@ -1,6 +1,8 @@
 # MyApp1
 一、Activity的基本概念
 　　Activity是Android的四大组件之一，它是一种可以包含用户界面的组件，主要用于和用户进行交互，比如打电话，照相，发送邮件，或者显示一个地图！Activity用于显示用户界面，用户通过Activity交互完成相关操作 ， 一个App允许有多个Activity。
+  
+  
 
 二、Activity的生命周期
 　　Activity生命周期是每一个Android开发者都必须掌握的，当我们深入理解活动的生命周期之后，就可以写出更加连贯流畅的程序，让我们的程序拥有更好的用户体验
@@ -12,7 +14,10 @@ Activity 的可见生命周期发生在 onStart() 调用与 onStop() 调用之�
 Activity 的前台生命周期发生在 onResume() 调用与 onPause() 调用之间。在这段时间，Activity 位于屏幕上的所有其他 Activity 之前，并具有用户输入焦点。 Activity 可频繁转入和转出前台 — 例如，当设备转入休眠状态或出现对话框时，系统会调用 onPause()。 由于此状态可能经常发生转变，因此这两个方法中应采用适度轻量级的代码，以避免因转变速度慢而让用户等待。
 
 图 1 说明了这些循环以及 Activity 在状态转变期间可能经过的路径。矩形表示回调方法，当 Activity 在不同状态之间转变时，您可以实现这些方法来执行操作。
+
+
 ![图一](https://img-blog.csdnimg.cn/20190313214600981.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2x1X2x1X3poYW5n,size_16,color_FFFFFF,t_70)
+
 三、协调 Activity
 当一个 Activity 启动另一个 Activity 时，它们都会体验到生命周期转变。第一个 Activity 暂停并停止（但如果它在后台仍然可见，则不会停止）时，同时系统会创建另一个 Activity。 如果这些 Activity 共用保存到磁盘或其他地方的数据，必须了解的是，在创建第二个 Activity 前，第一个 Activity 不会完全停止。更确切地说，启动第二个 Activity 的过程与停止第一个 Activity 的过程存在重叠。
 
@@ -23,7 +28,10 @@ Activity B 的 onCreate()、onStart() 和 onResume() 方法依次执行。（Act
 然后，如果 Activity A 在屏幕上不再可见，则其 onStop() 方法执行。
 您可以利用这种可预测的生命周期回调顺序管理从一个 Activity 到另一个 Activity 的信息转变。 例如，如果您必须在第一个 Activity 停止时向数据库写入数据，以便下一个 Activity 能够读取该数据，则应在 onPause() 而不是 onStop() 执行期间向数据库写入数据。
 四、 项目运行截图
+
 ![第一次启动项目](https://img-blog.csdnimg.cn/20190313214905127.png)
+
 ![退出项目](https://img-blog.csdnimg.cn/20190313214943122.png)
+
 ![重新打开项目](https://img-blog.csdnimg.cn/20190313215006171.png)
 
